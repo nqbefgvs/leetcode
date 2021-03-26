@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-class Solution417 {
+class PacificAtlanticWaterFlow {
 
     public List<List<Integer>> pacificAtlantic(int[][] matrix) {
 
