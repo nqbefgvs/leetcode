@@ -40,17 +40,18 @@ public class FlipBinaryTreeToMatchPreorderTraversal {
         }
         if(node.left != null){
             if(node.left.val == voyage[index+1]){
-
+                index++;
+                checkNode(node.left);
             }
             else if(node.right != null && node.right.val == voyage[index+1]){
                 swapChild(node);
+                index++;
+                checkNode(node.left);
             }
             else{
                 res.add(-1);
                 return;
             }
-            index++;
-            checkNode(node.left);
         }
         if(node.right != null){
             if(node.right.val == voyage[index+1]){
