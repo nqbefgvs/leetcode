@@ -2,16 +2,16 @@ public class GlobalAndLocalInversions {
     public boolean isIdealPermutation(int[] A) {
         int first = Integer.MIN_VALUE;
         int second = Integer.MIN_VALUE;
-        int count = 1;
+        boolean higher = true;
         for(int i = 0; i < A.length; i++){
             if(A[i] >= first){
                 second = first;
                 first = A[i];
-                count = 1;
+                higher = true;
             }
-            else if(A[i] < first && A[i] >= second && count > 0){
+            else if(A[i] < first && A[i] >= second && higher){
                 second = A[i];
-                count = 0;
+                higher = false;
             }
             else{
                 return false;
