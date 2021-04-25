@@ -4,10 +4,10 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class CriticalConnectionsInANetwork {
-    int[] disc;
-    int[] low;
+    int[] disc;//被访问的时机
+    int[] low;//可回溯到的最早节点
     List<List<Integer>> ans = new LinkedList<>();
-    List<Integer>[] adj;
+    List<Integer>[] adj;//邻接表
 
     public List<List<Integer>> criticalConnections(int n, List<List<Integer>> connections)     {
         disc = new int[connections.size()];
