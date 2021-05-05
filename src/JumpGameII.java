@@ -2,9 +2,9 @@ public class JumpGameII {
     public int jump(int[] nums) {
         int index = 0;
         int count = 0;
+        int next = 0;
         while(index < nums.length - 1){
             int max = 0;
-            int next = 0;
             for(int j = nums[index]; j > 0; j--){
                 if(index + j >= nums.length - 1){
                     next = index + j;
