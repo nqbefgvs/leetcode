@@ -3,17 +3,15 @@ public class GlobalAndLocalInversions {
         int first = Integer.MIN_VALUE;
         int second = Integer.MIN_VALUE;
         boolean higher = true;
-        for(int i = 0; i < A.length; i++){
-            if(A[i] >= first){
+        for (int i = 0; i < A.length; i++) {
+            if (A[i] >= first) {
                 second = first;
                 first = A[i];
                 higher = true;
-            }
-            else if(A[i] < first && A[i] >= second && higher){
+            } else if (A[i] < first && A[i] >= second && higher) {
                 second = A[i];
                 higher = false;
-            }
-            else{
+            } else {
                 return false;
             }
         }

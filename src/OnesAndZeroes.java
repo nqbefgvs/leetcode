@@ -1,14 +1,13 @@
 public class OnesAndZeroes {
     public int findMaxForm(String[] strs, int m, int n) {
         int[][] r = new int[strs.length][2];
-        for(int i = 0; i < strs.length; i++){
+        for (int i = 0; i < strs.length; i++) {
             int zero = 0;
             int one = 0;
-            for(int j = 0; j < strs[i].length(); j++){
-                if(strs[i].charAt(j) == '0'){
+            for (int j = 0; j < strs[i].length(); j++) {
+                if (strs[i].charAt(j) == '0') {
                     zero++;
-                }
-                else{
+                } else {
                     one++;
                 }
             }
@@ -31,14 +30,14 @@ public class OnesAndZeroes {
 //        return left > right ? left : right;
 //    }
 
-    int dpMethod(int[][] r, int m, int n){
-        int[][][] dp = new int[r.length+1][m+1][n+1];
-        for(int i = 1; i <= r.length; i++){
-            for(int j = 0; j <= m; j++){
-                for(int k = 0; k <=n; k++){
-                    dp[i][j][k] = dp[i-1][j][k];
-                    if(r[i-1][0] <= j && r[i-1][1] <=k){
-                        dp[i][j][k] = Math.max(dp[i-1][j][k], dp[i-1][j-r[i-1][0]][k-r[i-1][1]]+1);
+    int dpMethod(int[][] r, int m, int n) {
+        int[][][] dp = new int[r.length + 1][m + 1][n + 1];
+        for (int i = 1; i <= r.length; i++) {
+            for (int j = 0; j <= m; j++) {
+                for (int k = 0; k <= n; k++) {
+                    dp[i][j][k] = dp[i - 1][j][k];
+                    if (r[i - 1][0] <= j && r[i - 1][1] <= k) {
+                        dp[i][j][k] = Math.max(dp[i - 1][j][k], dp[i - 1][j - r[i - 1][0]][k - r[i - 1][1]] + 1);
                     }
                 }
             }
@@ -46,8 +45,8 @@ public class OnesAndZeroes {
         return dp[r.length][m][n];
     }
 
-    public static void main(String[] args){
-        String[] strs = {"10","0001","111001","1","0"};
+    public static void main(String[] args) {
+        String[] strs = {"10", "0001", "111001", "1", "0"};
         OnesAndZeroes o = new OnesAndZeroes();
         System.out.println(o.findMaxForm(strs, 5, 3));
     }

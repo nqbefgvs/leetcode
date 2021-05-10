@@ -1,7 +1,7 @@
 import java.util.*;
 
 public class LetterCombinationsOfAPhoneNumber {
-//    public List<String> letterCombinations(String digits) {
+    //    public List<String> letterCombinations(String digits) {
 //        List<Set<String>> ls = new ArrayList();
 //        for(int i = 0; i < digits.length(); i++){
 //            char c = digits.charAt(i);
@@ -31,7 +31,7 @@ public class LetterCombinationsOfAPhoneNumber {
 //        return res;
 //    }
     private List<String> combinations = new ArrayList<>();
-    private Map<Character, String> letters = new HashMap<Character, String>(){
+    private Map<Character, String> letters = new HashMap<Character, String>() {
         {
             put('2', "abc");
             put('3', "def");
@@ -66,7 +66,7 @@ public class LetterCombinationsOfAPhoneNumber {
 
         // Get the letters that the current digit maps to, and loop through them
         String possibleLetters = letters.get(phoneDigits.charAt(index));
-        for (char letter: possibleLetters.toCharArray()) {
+        for (char letter : possibleLetters.toCharArray()) {
             // Add the letter to our current path
             path.append(letter);
             // Move on to the next digit
@@ -76,7 +76,7 @@ public class LetterCombinationsOfAPhoneNumber {
         }
     }
 
-    public static void main(String args[]){
+    public static void main(String args[]) {
         LetterCombinationsOfAPhoneNumber l = new LetterCombinationsOfAPhoneNumber();
         l.letterCombinations("234");
     }

@@ -8,7 +8,7 @@ public class StampingTheSequence {
         Stack<Integer> ans = new Stack();
         List<Node> A = new ArrayList();
 
-        for (int i = 0; i <= N-M; ++i) {
+        for (int i = 0; i <= N - M; ++i) {
             // For each window [i, i+M), A[i] will contain
             // info on what needs to change before we can
             // reverse stamp at this window.
@@ -16,10 +16,10 @@ public class StampingTheSequence {
             Set<Integer> made = new HashSet();
             Set<Integer> todo = new HashSet();
             for (int j = 0; j < M; ++j) {
-                if (target.charAt(i+j) == stamp.charAt(j))
-                    made.add(i+j);
+                if (target.charAt(i + j) == stamp.charAt(j))
+                    made.add(i + j);
                 else
-                    todo.add(i+j);
+                    todo.add(i + j);
             }
 
             A.add(new Node(made, todo));
@@ -28,10 +28,11 @@ public class StampingTheSequence {
             // enqueue letters from this window.
             if (todo.isEmpty()) {
                 ans.push(i);
-                for (int j = i; j < i + M; ++j) if (!done[j]) {
-                    queue.add(j);
-                    done[j] = true;
-                }
+                for (int j = i; j < i + M; ++j)
+                    if (!done[j]) {
+                        queue.add(j);
+                        done[j] = true;
+                    }
             }
         }
 
@@ -41,21 +42,22 @@ public class StampingTheSequence {
 
             // For each window that is potentially affected,
             // j: start of window
-            for (int j = Math.max(0, i-M+1); j <= Math.min(N-M, i); ++j) {
+            for (int j = Math.max(0, i - M + 1); j <= Math.min(N - M, i); ++j) {
                 if (A.get(j).todo.contains(i)) {  // This window is affected
                     A.get(j).todo.remove(i);
                     if (A.get(j).todo.isEmpty()) {
                         ans.push(j);
-                        for (int m: A.get(j).made) if (!done[m]) {
-                            queue.add(m);
-                            done[m] = true;
-                        }
+                        for (int m : A.get(j).made)
+                            if (!done[m]) {
+                                queue.add(m);
+                                done[m] = true;
+                            }
                     }
                 }
             }
         }
 
-        for (boolean b: done)
+        for (boolean b : done)
             if (!b) return new int[0];
 
         int[] ret = new int[ans.size()];
@@ -69,6 +71,7 @@ public class StampingTheSequence {
 
 class Node {
     Set<Integer> made, todo;
+
     Node(Set<Integer> m, Set<Integer> t) {
         made = m;
         todo = t;

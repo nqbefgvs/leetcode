@@ -11,30 +11,28 @@ public class MyCircularQueue {
     }
 
     public boolean enQueue(int value) {
-        if(len < q.length){
+        if (len < q.length) {
             q[(front + len++) % q.length] = value;
             return true;
-        }
-        else return false;
+        } else return false;
     }
 
     public boolean deQueue() {
-        if(len > 0){
+        if (len > 0) {
             front = (front + 1) % q.length;
             len--;
             return true;
-        }
-        else return false;
+        } else return false;
     }
 
     public int Front() {
-        if(len > 0)
+        if (len > 0)
             return q[front];
         else return -1;
     }
 
     public int Rear() {
-        if(len > 0)
+        if (len > 0)
             return q[(front + len - 1) % q.length];
         else return -1;
     }
@@ -47,7 +45,7 @@ public class MyCircularQueue {
         return len == q.length;
     }
 
-    public static void main(String args[]){
+    public static void main(String args[]) {
         MyCircularQueue m = new MyCircularQueue(3);
         m.enQueue(1);
         m.enQueue(2);

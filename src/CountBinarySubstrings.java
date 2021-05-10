@@ -4,29 +4,26 @@ public class CountBinarySubstrings {
         int res = 0;
         int count0 = 0, count1 = 0;
         int turn = 0;
-        for(int i = 0; i < s.length(); i++){
+        for (int i = 0; i < s.length(); i++) {
             char c = s.charAt(i);
-            if(c == '1'){
-                if(turn == 1){
+            if (c == '1') {
+                if (turn == 1) {
                     count1++;
-                }
-                else{
+                } else {
                     turn = 1;
                     count1 = 1;
                 }
-                if(count1 <= count0){
+                if (count1 <= count0) {
                     res++;
                 }
-            }
-            else if(c == '0'){
-                if(turn == 0){
+            } else if (c == '0') {
+                if (turn == 0) {
                     count0++;
-                }
-                else{
+                } else {
                     turn = 0;
                     count0 = 1;
                 }
-                if(count0 <= count1){
+                if (count0 <= count1) {
                     res++;
                 }
             }
@@ -34,7 +31,7 @@ public class CountBinarySubstrings {
         return res;
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         new CountBinarySubstrings().countBinarySubstrings("00110");
     }
 
